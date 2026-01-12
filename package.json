@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Web-based tool to wrap Google Ads negative keywords",
   "scripts": {
-    "deploy": "wrangler deploy --assets ."
+    "deploy": "wrangler deploy --assets .",
+    "deploy:preview": "wrangler versions upload --assets ."
   }
 }
