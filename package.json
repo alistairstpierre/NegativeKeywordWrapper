@@ -2,5 +2,7 @@
   "name": "negative-keyword-wrapper",
   "version": "1.0.0",
   "description": "Web-based tool to wrap Google Ads negative keywords",
-  "scripts": {}
+  "scripts": {
+    "deploy": "echo 'Static site - no deployment needed'"
+  }
 }

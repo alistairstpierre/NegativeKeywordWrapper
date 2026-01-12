@@ -2,5 +2,6 @@
 # Deploy script for Cloudflare Pages
 # This script deploys the static site to Cloudflare Pages
 
-# Try to deploy, but don't fail if project doesn't exist yet
-npx wrangler pages deploy . --project-name=NegativeKeywordWrapper || echo "Deployment command executed"
+# For static sites on Cloudflare Pages, if using GitHub integration,
+# no deploy command is typically needed. This is a placeholder.
+echo "Static HTML site - Cloudflare Pages will serve files automatically"
