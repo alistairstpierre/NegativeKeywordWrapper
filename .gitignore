@@ -11,3 +11,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Cloudflare/Wrangler
+.wrangler/
+wrangler.toml.bak
