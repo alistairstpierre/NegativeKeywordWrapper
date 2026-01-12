@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Ads Negative Keyword Wrapper</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .match-type-section {
+            margin-bottom: 30px;
+        }
+
+        .match-type-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .match-type-option {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .match-type-option input[type="radio"] {
+            display: none;
+        }
+
+        .match-type-option label {
+            display: block;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9fa;
+            font-weight: 500;
+        }
+
+        .match-type-option input[type="radio"]:checked + label {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .match-type-option label:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+        }
+
+        .match-type-option input[type="radio"]:checked + label:hover {
+            background: #5568d3;
+        }
+
+        .example {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .button-section {
+            margin-bottom: 30px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .output-section {
+            margin-top: 30px;
+        }
+
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .copy-button {
+            width: auto;
+            padding: 8px 16px;
+            font-size: 12px;
+            background: #28a745;
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+            margin: 0;
+        }
+
+        .copy-button:hover {
+            background: #218838;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+        }
+
+        .copy-button.copied {
+            background: #6c757d;
+        }
+
+        .stats {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .match-type-options {
+                flex-direction: column;
+            }
+
+            .match-type-option {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Google Ads Negative Keyword Wrapper</h1>
+        <p class="subtitle">Transform your keywords into the correct format for Google Ads negative keyword lists</p>
+
+        <div class="input-section">
+            <label for="keyword-input">Paste your keywords (one per line):</label>
+            <textarea id="keyword-input" placeholder="short cut&#10;trail&#10;jpegs&#10;examples&#10;remainders&#10;interns"></textarea>
+        </div>
+
+        <div class="match-type-section">
+            <label>Match Type:</label>
+            <div class="match-type-options">
+                <div class="match-type-option">
+                    <input type="radio" id="broad" name="match-type" value="broad" checked>
+                    <label for="broad">Broad Match<div class="example">keyword</div></label>
+                </div>
+                <div class="match-type-option">
+                    <input type="radio" id="phrase" name="match-type" value="phrase">
+                    <label for="phrase">Phrase Match<div class="example">"keyword"</div></label>
+                </div>
+                <div class="match-type-option">
+                    <input type="radio" id="exact" name="match-type" value="exact">
+                    <label for="exact">Exact Match<div class="example">[keyword]</div></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-section">
+            <button id="transform-button" onclick="transformKeywords()">Transform Keywords</button>
+        </div>
+
+        <div class="output-section">
+            <div class="output-header">
+                <label for="keyword-output">Wrapped Keywords:</label>
+                <button class="copy-button" id="copy-button" onclick="copyToClipboard()">Copy All</button>
+            </div>
+            <textarea id="keyword-output" readonly placeholder="Your wrapped keywords will appear here..."></textarea>
+            <div class="stats" id="stats"></div>
+        </div>
+    </div>
+
+    <script>
+        function stripExistingMatchType(keyword) {
+            keyword = keyword.trim();
+            if (!keyword) return '';
+            
+            // Check for exact match: [keyword]
+            if (keyword.startsWith('[') && keyword.endsWith(']')) {
+                return keyword.slice(1, -1).trim();
+            }
+            
+            // Check for phrase match: "keyword"
+            if (keyword.startsWith('"') && keyword.endsWith('"')) {
+                return keyword.slice(1, -1).trim();
+            }
+            
+            // No match type, return as is
+            return keyword;
+        }
+
+        function wrapKeyword(keyword, matchType) {
+            // First strip any existing match type
+            keyword = stripExistingMatchType(keyword);
+            if (!keyword) return '';
+
+            switch(matchType) {
+                case 'broad':
+                    return keyword;
+                case 'phrase':
+                    return `"${keyword}"`;
+                case 'exact':
+                    return `[${keyword}]`;
+                default:
+                    return keyword;
+            }
+        }
+
+        function transformKeywords() {
+            const input = document.getElementById('keyword-input').value;
+            const matchType = document.querySelector('input[name="match-type"]:checked').value;
+            const output = document.getElementById('keyword-output');
+            const stats = document.getElementById('stats');
+
+            if (!input.trim()) {
+                output.value = '';
+                stats.textContent = '';
+                alert('Please enter some keywords to transform.');
+                return;
+            }
+
+            const lines = input.split('\n');
+            const wrappedKeywords = [];
+            let processedCount = 0;
+
+            lines.forEach(line => {
+                const wrapped = wrapKeyword(line, matchType);
+                if (wrapped) {
+                    wrappedKeywords.push(wrapped);
+                    processedCount++;
+                }
+            });
+
+            output.value = wrappedKeywords.join('\n');
+            stats.textContent = `Processed ${processedCount} keyword${processedCount !== 1 ? 's' : ''}`;
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('keyword-output');
+            const copyButton = document.getElementById('copy-button');
+
+            if (!output.value.trim()) {
+                alert('No keywords to copy. Please transform some keywords first.');
+                return;
+            }
+
+            output.select();
+            output.setSelectionRange(0, 99999); // For mobile devices
+
+            try {
+                document.execCommand('copy');
+                const originalText = copyButton.textContent;
+                copyButton.textContent = 'Copied!';
+                copyButton.classList.add('copied');
+                
+                setTimeout(() => {
+                    copyButton.textContent = originalText;
+                    copyButton.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                // Fallback for modern browsers
+                navigator.clipboard.writeText(output.value).then(() => {
+                    const originalText = copyButton.textContent;
+                    copyButton.textContent = 'Copied!';
+                    copyButton.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        copyButton.textContent = originalText;
+                        copyButton.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    alert('Failed to copy. Please select and copy manually.');
+                });
+            }
+        }
+
+        // Allow Enter key to trigger transformation (Ctrl/Cmd + Enter)
+        document.getElementById('keyword-input').addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                transformKeywords();
+            }
+        });
+    </script>
+</body>
+</html>
