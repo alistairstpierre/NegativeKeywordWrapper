@@ -1,7 +1,5 @@
 #!/bin/bash
-# Deploy script for Cloudflare Pages
-# This script deploys the static site to Cloudflare Pages
+# Deploy script for Cloudflare Worker with static assets
+# This deploys the static HTML site as a Worker with static assets
 
-# For static sites on Cloudflare Pages, if using GitHub integration,
-# no deploy command is typically needed. This is a placeholder.
-echo "Static HTML site - Cloudflare Pages will serve files automatically"
+npx wrangler deploy --assets .
