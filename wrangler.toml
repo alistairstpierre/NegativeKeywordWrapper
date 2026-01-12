@@ -1,0 +1,5 @@
+name = "negativekeywordwrapper"
+compatibility_date = "2026-01-12"
+
+# Serve static assets (HTML, CSS, JS files)
+# The --assets flag in deploy command will handle this
